@@ -1,0 +1,49 @@
+<!-- FORM TO CREATE TODOS -->
+<div id="todo-form" class="row">
+	<div class="col-sm-8 col-sm-offset-2 text-center">
+		<form>
+			<div class="form-group">
+				<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+				<input type="text" class="form-control input-lg text-center" placeholder="I want to buy a puppy that will love me forever" ng-model="formData.name">
+			</div>
+			<!-- createToDo() WILL CREATE NEW TODOS -->
+			<button type="submit" class="btn btn-primary btn-lg" ng-show="!formData._id" ng-click="create()">Add</button>
+			<button type="submit" class="btn btn-primary btn-lg" ng-show="formData._id" ng-click="update(formData._id)">Save</button>
+		</form>
+	</div>
+</div>
+
+<!-- TODO LIST -->
+<div id="todo-list" class="row">
+	<div class="col-sm-6 col-sm-offset-3">
+	<div class="form-group">
+		<input type="text" ng-model="key" ng-change="search(key)" class="form-control input-lg" placeholder="Enter your search terms" />
+	</div>
+		<!-- LOOP OVER THE students IN $scope.students -->
+		<table class="table table-responsive">
+			<thead>
+				<th>
+					Name
+				</th>
+				<th colspan="2">
+					Action
+				</th>
+			</thead>			
+			<tbody ng-repeat="student in students">
+			<tr>
+				<td>
+				{{student.name}}					
+				</td>
+				<td>
+					<span ng-click="edit(student._id)" class="fa fa-edit"></span>
+				</td>
+				<td>
+					<span ng-click="remove(student._id)" class="fa fa-remove"></span>
+				</td>
+				<td>
+				</td>
+			</tr>
+		</tbody>
+		</table>
+	</div>
+</div>
